@@ -1,0 +1,51 @@
+body
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+.backdrop
+{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+
+    background-image: url(images/loadscreen.jpg);
+    background-size: 100% 100%;
+}
+
+.letni
+{
+    position: absolute;
+    bottom: 35%;
+	width: 100%;
+	height: 265px;
+
+    z-index: 5;
+
+    color: #fff;
+}
+
+.loadbar
+{
+    width: 100%;
+    background-image: url(images/loading-banner-unloaded.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+    height: 265px;
+    overflow: hidden;
+    position: relative;
+    display: block;
+}
+
+.fill
+{
+    width: 10%;
+    background-image: url(images/loading-banner-loaded.png);
+	background-repeat: no-repeat;
+    height: 265px;
+    position: absolute;
+    left: 0%;
+}

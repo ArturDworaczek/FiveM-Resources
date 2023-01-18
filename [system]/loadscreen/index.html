@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <link href="main.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+        <audio autoplay loop>
+            <source src="background-music.mp3" type="audio/mpeg">
+        </audio>
+        <div class="backdrop">
+            <div class="letni">
+                <div class="loadbar"><div class="fill"></div></div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+        document.getElementsByClassName("fill")[0].style.backgroundSize = document.getElementsByClassName("loadbar")[0].clientWidth + "px"
+        window.addEventListener("resize", function() {
+            document.getElementsByClassName("fill")[0].style.backgroundSize = document.getElementsByClassName("loadbar")[0].clientWidth + "px"
+        });
+
+        var count = 0;
+        var thisCount = 0;
+
+        const handlers = {
+            startInitFunctionOrder(data)
+            {
+                count = data.count;
+            },
+
+            initFunctionInvoking(data)
+            {
+                document.querySelector('.fill').style.left = '0%';
+                document.querySelector('.fill').style.width = ((data.idx / count) * 100) + '%';
+            },
+
+            startDataFileEntries(data)
+            {
+                count = data.count;
+            },
+
+            performMapLoadFunction(data)
+            {
+                ++thisCount;
+
+                document.querySelector('.fill').style.left = '0%';
+                document.querySelector('.fill').style.width = ((thisCount / count) * 100) + '%';
+            },
+        };
+
+        window.addEventListener('message', function(e)
+        {
+            (handlers[e.data.eventName] || function() {})(e.data);
+        });
+        </script>
+    </body>
+</html>
